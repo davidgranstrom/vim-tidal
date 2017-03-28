@@ -225,10 +225,10 @@ command -bar -nargs=0 TidalConfig call s:TidalConfig()
 command -range -bar -nargs=0 TidalSend <line1>,<line2>call s:TidalSendRange()
 command -nargs=+ TidalSend1 call s:TidalSend(<q-args> . "\r")
 
-command! -nargs=0 TidalPrintType call s:TidalPrintType()
 command! -nargs=0 TidalHush call s:TidalHush()
 command! -nargs=1 TidalSilence call s:TidalSilence(<args>)
 command! -nargs=1 TidalPlay call s:TidalPlay(<args>)
+command! -nargs=0 TidalPrintType call s:TidalPrintType()
 
 noremap <SID>Operator :<c-u>call <SID>TidalStoreCurPos()<cr>:set opfunc=<SID>TidalSendOp<cr>g@
 
@@ -237,6 +237,7 @@ noremap <unique> <script> <silent> <Plug>TidalLineSend :<c-u>call <SID>TidalSend
 noremap <unique> <script> <silent> <Plug>TidalMotionSend <SID>Operator
 noremap <unique> <script> <silent> <Plug>TidalParagraphSend <SID>Operatorip
 noremap <unique> <script> <silent> <Plug>TidalConfig :<c-u>TidalConfig<cr>
+noremap <unique> <script> <silent> <Plug>TidalPrintType :<c-u>TidalPrintType<cr>
 
 ""
 " Default options
