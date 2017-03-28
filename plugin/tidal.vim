@@ -166,6 +166,13 @@ function! s:TidalRestoreCurPos()
   endif
 endfunction
 
+function! s:TidalPrintType()
+    let l:word = expand("<cword>")
+    if !empty(l:word)
+        silent execute 'TidalSend1 ' . ':t ' . l:word
+    endif
+endfunction
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Public interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -218,6 +225,7 @@ command -bar -nargs=0 TidalConfig call s:TidalConfig()
 command -range -bar -nargs=0 TidalSend <line1>,<line2>call s:TidalSendRange()
 command -nargs=+ TidalSend1 call s:TidalSend(<q-args> . "\r")
 
+command! -nargs=0 TidalPrintType call s:TidalPrintType()
 command! -nargs=0 TidalHush call s:TidalHush()
 command! -nargs=1 TidalSilence call s:TidalSilence(<args>)
 command! -nargs=1 TidalPlay call s:TidalPlay(<args>)
